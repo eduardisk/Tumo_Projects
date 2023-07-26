@@ -1,0 +1,62 @@
+import time
+import re
+
+#Create a program which will take a time from the user as a timer and start to countdown in the terminal. You can use any library and function you want for this mini project. 
+#Make sure your program - is written only using Python - each new countdown line appears after one second, not immediately
+
+
+while True:
+    intHours = input("Enter hours: ")
+    if not re.match("^[0-2][0-3]$", intHours):
+        print("Error! Make sure you only use numbers in Hours format 0-23")
+        continue
+    else:
+        intHours = int(intHours)
+        break
+
+while True:
+    intMinutes = input("Enter minutes: ")
+    if not re.match("^[0-5][0-9]$", intMinutes):
+        print("Error! Make sure you only use numbers in Minutes format 0-59")
+        continue
+    else:
+        intMinutes=int(intMinutes)
+        break
+
+while True:
+    intSeconds = input("Enter seconds: ")
+    if not re.match("^[0-5][0-9]$", intSeconds):
+        print("Error! Make sure you only use numbers in Seconds format 0-59")
+        continue
+    else:
+        intSeconds = int(intSeconds)
+        break
+
+ 
+sHours = str()
+sMinutes = str()
+sSeconds = str()
+
+
+while intHours != -1:
+    sHours = intHours
+    if len(str(intHours)) == 1:
+        sHours = f"0{intHours}"
+    sMinutes = intMinutes
+    if len(str(intMinutes)) == 1:
+        sMinutes = f"0{intMinutes}"
+    sSeconds = intSeconds
+    if len(str(intSeconds)) == 1:
+        sSeconds = f"0{intSeconds}"
+
+    print(f"{sHours}:{sMinutes}:{sSeconds}")
+    intSeconds -= 1
+    if intSeconds == -1:
+        intSeconds = 59
+        intMinutes -= 1
+
+    if intMinutes == -1:
+        intMinutes = 59
+        intHours -= 1
+
+    time.sleep(1)
