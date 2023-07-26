@@ -1,0 +1,32 @@
+import random
+x = 0
+y = 0
+    
+def roll_dice():
+    x = random.randint(1, 6)
+    y = random.randint(1, 6)
+    global sum1
+    sum1 = x + y
+    print(f"First dice is {x}, the second dice is {y} and the sum is {sum1}")
+    if sum1 == 7 or sum1 == 11:
+        print("Player wins")
+    elif sum1 == 2 or sum1 == 3 or sum1 == 12:
+        print("Casino wins")
+    else:
+        print(f"{sum1} is the goal number")
+        second_roll()
+
+def second_roll():
+    x = random.randint(1, 6)
+    y = random.randint(1, 6)
+    global sum2
+    sum2 = x + y
+    print(f"First dice is {x}, the second dice is {y} and the sum is {sum2}")
+    if sum2 == 7:
+        print("Casino wins")
+    elif sum2 == sum1:
+        print(f"Player rolled {x} and {y}, the goal number")
+    else:
+        second_roll()
+        
+roll_dice()
